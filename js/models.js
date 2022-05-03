@@ -25,7 +25,7 @@ varying vec2 vUv;
 varying vec2 vShow;
 void main() {
 
-	gl_FragColor = vec4(vShow, 0., 1.);
+	gl_FragColor = vec4(vShow, 0. + time * 0.003  , 1.);
 }
 `;
 
@@ -172,9 +172,12 @@ class setup3d {
         
         requestAnimationFrame(  this.animate.bind(this) );
 	    this.renderer.render( this.scene, this.camera );
+
+		this.shader_mat.uniforms.time.value += 1;
         
     }
     run(){
+		//this.mesh_1.shader_mat.uniforms.time.value += 1;
         this.animate()
     }
 }
